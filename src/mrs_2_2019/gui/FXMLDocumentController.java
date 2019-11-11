@@ -14,10 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import mrs_2_2019.dal.MovieDAO;
 
 /**
@@ -27,10 +31,35 @@ import mrs_2_2019.dal.MovieDAO;
 public class FXMLDocumentController implements Initializable
 {
     
-    @FXML
-    private Label label;
-    @FXML
     private ListView<Movie> lstView;
+    @FXML
+    private TextField txtMovieTitle;
+    @FXML
+    private TextField txtMovieYear;
+    @FXML
+    private TextField txtSelectedMovieTitle;
+    @FXML
+    private TextField txtSelectedMovieYear;
+    @FXML
+    private TextField txtMovieSearch;
+    @FXML
+    private ListView<?> lstMovies;
+    @FXML
+    private TextField txtUserSearch;
+    @FXML
+    private ListView<?> lstUsers;
+    @FXML
+    private RadioButton radioRatingMinus5;
+    @FXML
+    private RadioButton radioRatingMinus3;
+    @FXML
+    private RadioButton radioRating1;
+    @FXML
+    private RadioButton radioRating3;
+    @FXML
+    private RadioButton radioRating5;
+    @FXML
+    private ListView<?> lstRecommendedMovies;
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -47,5 +76,35 @@ public class FXMLDocumentController implements Initializable
             ex.printStackTrace();
         }
     }    
+
+    @FXML
+    private void handleAddMovie(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void handleUpdateMovie(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void handleDeleteMovie(ActionEvent event)
+    {
+    }
+
+    @FXML
+    private void handleSearchMovie(KeyEvent event)
+    {
+    }
+
+    @FXML
+    private void handleSearchUser(KeyEvent event)
+    {
+    }
+
+    @FXML
+    private void handleUserRateMovie(ActionEvent event)
+    {
+    }
     
 }
