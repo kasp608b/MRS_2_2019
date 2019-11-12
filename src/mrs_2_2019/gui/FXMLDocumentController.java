@@ -43,7 +43,7 @@ public class FXMLDocumentController implements Initializable
     @FXML
     private TextField txtMovieSearch;
     @FXML
-    private ListView<?> lstMovies;
+    private ListView<Movie> lstMovies;
     @FXML
     private TextField txtUserSearch;
     @FXML
@@ -69,7 +69,7 @@ public class FXMLDocumentController implements Initializable
             MovieDAO movieDao = new MovieDAO();
             List<Movie> allMovies = movieDao.getAllMovies();    
             ObservableList<Movie> obsAllMovies =  FXCollections.observableArrayList(allMovies);
-            lstView.setItems(obsAllMovies);
+            lstMovies.setItems(obsAllMovies);
         } catch (Exception ex)
         {
             System.out.println("Ooops");
