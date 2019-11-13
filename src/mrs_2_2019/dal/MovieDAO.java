@@ -17,6 +17,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mrs_2_2019.be.Movie;
 
 /**
@@ -122,10 +124,20 @@ public class MovieDAO
 
     public static void main(String[] args) throws IOException, ClassNotFoundException
     {
-        MovieDAO movieDao = new MovieDAO();
-        List<Movie> allMovies = movieDao.getAllMovies();
-
-        movieDao.writeAllMovies(allMovies, "data/moviesAsObjects.txt");
+        try
+        {
+            MovieDAO movieDao = new MovieDAO();
+            List<Movie> allMovies = movieDao.getAllMovies();
+            
+            movieDao.writeAllMovies(allMovies, "data/moviesAsObjects.txt");
+        } catch (IOException ex)
+        {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex)
+        {
+            Logger.getLogger(MovieDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Done");
 
     }
 
