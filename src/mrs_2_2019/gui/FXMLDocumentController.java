@@ -23,6 +23,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import mrs_2_2019.dal.MovieDAO;
+import mrs_2_2019.gui.model.MovieModel;
 
 /**
  *
@@ -30,7 +31,8 @@ import mrs_2_2019.dal.MovieDAO;
  */
 public class FXMLDocumentController implements Initializable
 {
-    
+     private MovieModel movieModel;
+   
     private ListView<Movie> lstView;
     @FXML
     private TextField txtMovieTitle;
@@ -64,12 +66,10 @@ public class FXMLDocumentController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        try
+         try
         {
-            MovieDAO movieDao = new MovieDAO();
-            List<Movie> allMovies = movieDao.getAllMovies();    
-            ObservableList<Movie> obsAllMovies =  FXCollections.observableArrayList(allMovies);
-            lstMovies.setItems(obsAllMovies);
+            movieModel = new MovieModel();
+            lstView.setItems(movieModel.getAllMovies());
         } catch (Exception ex)
         {
             System.out.println("Ooops");
@@ -95,6 +95,14 @@ public class FXMLDocumentController implements Initializable
     @FXML
     private void handleSearchMovie(KeyEvent event)
     {
+         try
+        {
+            String query = txtMovieSearch.getText().trim();
+            movieModel.search(query);
+        } catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
