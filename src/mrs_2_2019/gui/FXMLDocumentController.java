@@ -69,7 +69,7 @@ public class FXMLDocumentController implements Initializable
          try
         {
             movieModel = new MovieModel();
-            lstView.setItems(movieModel.getAllMovies());
+            lstMovies.setItems(movieModel.getAllMovies());
         } catch (Exception ex)
         {
             System.out.println("Ooops");
